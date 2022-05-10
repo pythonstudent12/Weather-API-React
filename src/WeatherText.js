@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Spinner from './Spinner';
 import WeatherService from './WeatherService';
 
 class WeatherText extends Component {
@@ -12,7 +13,8 @@ class WeatherText extends Component {
        lon: null,
        weather: null,
        country: null,
-       name: null
+       name: null,
+       loading: true
     }
 
     weatherService = new WeatherService();
@@ -34,7 +36,12 @@ class WeatherText extends Component {
     
 
     render() {
-        const {lat, lon, weather, country, name} = this.state;
+        const {lat, lon, weather, country, name, loading} = this.state;
+
+        if (loading) {
+          return <Spinner/>
+        }
+        
         return (
             
                 <div >
