@@ -10,14 +10,14 @@ class WeatherService {
         return await res.json();
     }
 
-    getAllCharacters = async () => {
+    getWeatherInfo = async () => {
         let lat = Math.floor(Math.random() * (80 - 20) + 20);
         let lon = Math.floor(Math.random() * (80 - 20) + 20);
         const res = await this.getResource(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this._apiKey}`);
-        return this._transformCharacter(res);
+        return this._transformInfo(res);
     }
 
-    _transformCharacter = (res) => {
+    _transformInfo = (res) => {
         return {
             coord_x: res.coord.lon,
             coord_y: res.coord.lat,

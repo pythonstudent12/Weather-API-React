@@ -4,7 +4,7 @@ import WeatherService from './WeatherService';
 class WeatherText extends Component {
    constructor (props) {
      super(props);
-     this.updateChar();
+     this.updateInfo();
    }
 
     state = {
@@ -17,9 +17,9 @@ class WeatherText extends Component {
 
     weatherService = new WeatherService();
 
-    updateChar = () => {
+    updateInfo = () => {
       this.weatherService
-      .getAllCharacters()
+      .getWeatherInfo()
       .then(res => {
         this.setState({
           lat: res.coord_x,
