@@ -41,11 +41,11 @@ class WeatherText extends Component {
 }
 
 const View = ({res}) => {
-  const {lat, lon, weather, country, name} = res;
+  const {lon, lat, weather, country, name} = res;
   return (
     <div >
-      <p>Широта: {lat}</p>
-      <p>Долгота: {lon}</p>
+      <p>Широта: {lon}</p>
+      <p>Долгота: {lat}</p>
       <p>Страна: {country}</p>
       <p>Место: {name}</p>
       <p>Погода: {weather}</p>

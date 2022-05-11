@@ -19,8 +19,8 @@ class WeatherService {
 
     _transformInfo = (res) => {
         return {
-            lat: res.coord.lon,
-            lon: res.coord.lat,
+            lon: res.coord.lon,
+            lat: res.coord.lat,
             weather: res.weather[0].description,
             country: res.sys.country,
             name: res.name
