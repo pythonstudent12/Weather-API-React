@@ -9,55 +9,54 @@ class WeatherText extends Component {
    }
 
     state = {
-       lat: null,
-       lon: null,
-       weather: null,
-       country: null,
-       name: null,
-       loading: true
+      res: {},
+      loading: true
     }
 
     weatherService = new WeatherService();
 
+
+    onInfoLoaded = (res) => {
+      this.setState({
+      res,
+      loading: false
+      })
+    }
+
     updateInfo = () => {
       this.weatherService
       .getWeatherInfo()
-      .then(res => {
-        this.setState({
-          lat: res.coord_x,
-          lon: res.coord_y,
-          weather: res.weather,
-          country: res.country,
-          name: res.name
-
-        })
-      })
+      .then(this.onInfoLoaded)
     }
     
 
     render() {
-        const {lat, lon, weather, country, name, loading} = this.state;
-
-        if (loading) {
-          return <Spinner/>
-        }
-        
-        return (
-            
-                <div >
-                    <div >
-                        <p>Широта: {lat}</p>
-                        <p>Долгота: {lon}</p>
-                        <p>Страна: {country}</p>
-                        <p>Место: {name}</p>
-                        <p>Погода: {weather}</p>
-                        
-                    </div>
+        const {res, loading} = this.state;
+          return (
+                <div>
+                  {loading ? <Spinner/> : <View res={res}/>}
                 </div>
-           
-            
         )
     }
 }
+
+const View = ({res}) => {
+  const {lat, lon, weather, country, name} = res;
+  return (
+    <div >
+      <p>Широта: {lat}</p>
+      <p>Долгота: {lon}</p>
+      <p>Страна: {country}</p>
+      <p>Место: {name}</p>
+      <p>Погода: {weather}</p>
+    </div>
+  )
+}
+
+
+
+
+
+
 export default WeatherText;
 
