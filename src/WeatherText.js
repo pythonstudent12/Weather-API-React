@@ -3,11 +3,7 @@ import Spinner from './Spinner';
 import WeatherService from './WeatherService';
 
 class WeatherText extends Component {
-   constructor (props) {
-     super(props);
-     this.updateInfo();
-   }
-
+  
     state = {
       res: {},
       loading: true
@@ -15,6 +11,9 @@ class WeatherText extends Component {
 
     weatherService = new WeatherService();
 
+    componentDidMount () {
+      this.updateInfo();
+    }
 
     onInfoLoaded = (res) => {
       this.setState({
@@ -53,10 +52,4 @@ const View = ({res}) => {
   )
 }
 
-
-
-
-
-
 export default WeatherText;
-
