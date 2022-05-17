@@ -12,6 +12,7 @@ class WeatherText extends Component {
     weatherService = new WeatherService();
 
     componentDidMount () {
+      //this.foo.bar=0;
       this.updateInfo();
     }
 

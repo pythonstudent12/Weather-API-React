@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import WeatherText from './WeatherText';
+import ErrorBoundary from './ErrorBoundary';
 
 function App() {
 
@@ -9,7 +10,9 @@ function App() {
     <div className="App">
       <header className="App-header">
       Прогноз погоды
+      <ErrorBoundary>
         <WeatherText/>
+      </ErrorBoundary>
       </header>
     </div>
   );
