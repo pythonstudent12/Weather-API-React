@@ -1,10 +1,11 @@
 class WeatherService {
     
-    _apiKey = '06fedfea606ed7b940e224fe7059c6a6';
+    _apiKey = 'f3b5103f13f60b1d60e616a12b145d56';
 
     getResource = async (url) => {
         let res = await fetch(url);
         if (!res.ok) {
+            console.log('000');
             throw new Error(`Could not fetch ${url}, status: ${res.status}`);
         }
         return await res.json();

@@ -1,6 +1,9 @@
 import { Component } from 'react';
 import Spinner from './Spinner';
+import View from './View';
 import WeatherService from './WeatherService';
+import PropTypes from 'prop-types'
+
 
 class WeatherText extends Component {
   
@@ -29,28 +32,26 @@ class WeatherText extends Component {
       .then(this.onInfoLoaded)
     }
     
+    onUpdate = (e) => {
+      const term = e.target.value;
+      console.log(term);
+    }
 
     render() {
         const {res, loading} = this.state;
           return (
                 <div>
-                  {loading ? <Spinner/> : <View res={res}/>}
+                  {loading ? <Spinner/> : <View props={res}/>}
                 </div>
         )
     }
 }
 
-const View = ({res}) => {
-  const {lon, lat, weather, country, name} = res;
-  return (
-    <div >
-      <p>Широта: {lon}</p>
-      <p>Долгота: {lat}</p>
-      <p>Страна: {country}</p>
-      <p>Место: {name}</p>
-      <p>Погода: {weather}</p>
-    </div>
-  )
+WeatherText.propTypes = {
+  name: PropTypes.number,
+  lon: PropTypes.number,
+  lat: PropTypes.number
 }
+
 
 export default WeatherText;
