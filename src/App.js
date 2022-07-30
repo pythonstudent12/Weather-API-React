@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      Прогноз погоды
+      Прогноз погоды-3
       <ErrorBoundary>
         <WeatherText/>
       </ErrorBoundary>
